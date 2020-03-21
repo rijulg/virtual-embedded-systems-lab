@@ -3,6 +3,11 @@
     "dockerComposeFile": "docker-compose.yml",
     "service": "dev",
     "workspaceFolder": "/home/workspace",
+    "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "twxs.cmake"
+    ],
     "shutdownAction": "stopCompose",
     "postCreateCommand": "cd .devcontainer && chmod +x setup.sh && ./setup.sh"
 }

@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "rcc.h": "c",
+        "common.h": "c",
+        "stdint.h": "c",
+        "stdlib.h": "c",
+        "gpio.h": "c",
+        "gpio_common_f24.h": "c",
+        "stm32f4xx_conf.h": "c"
+    }
+}
