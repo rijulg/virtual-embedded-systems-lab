@@ -1,0 +1,3 @@
+[submodule ".\\.stm32f407vg\\libopencm3"]
+	path = .\\.stm32f407vg\\libopencm3
+	url = https://github.com/libopencm3/libopencm3

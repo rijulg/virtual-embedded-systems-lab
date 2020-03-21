@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  dev:
+    image: embedded-systems-lab:v1
+    # Enable build if needed
+    build: .
+    # We do not want to recreate the container or have multiple instances of it running ever
+    container_name: embedded-systems-lab
+    volumes:
+      # Mount working folder
+      - ../:/home/workspace
+    ports:
+      - 6080:6080
+    # The following commands ensure that the container stays active
+    entrypoint: bash
+    stdin_open: true
+    tty: true
