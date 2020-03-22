@@ -3,6 +3,9 @@
 --verbose --verbose \
 --board STM32F4-Discovery --mcu STM32F407VG \
 -d unimp,guest_errors \
---image test.elf \
+--image f407-disc-blink-tutorial/build/blinky.elf \
 --semihosting-config enable=on,target=native \
 --semihosting-cmdline test 1 2 3
+# --image f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf \
+# --image test.elf \
+# --image .stm32f407vg/build/lab1.elf \

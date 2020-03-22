@@ -4,10 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/.stm32f407vg/libopencm3/include",
                 "/usr/include/newlib"
             ],
-            "defines": [],
+            "defines": ["DEVICE_FAMILY=STM32F40_41xxx"],
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64"

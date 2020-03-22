@@ -1,33 +1,38 @@
-#include "stm32f4xx_conf.h"
+#include "stm32f4xx.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-void setup() {
-    /* Set STM32 to 168 MHz. */
-	// rcc_clock_setup_pll(&rcc_hse_8mhz_3v3[RCC_CLOCK_3V3_168MHZ]);
-	
-	// /* Enable GPIOD clock. */
-	// rcc_periph_clock_enable(RCC_GPIOD);
+const uint16_t LEDS = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+const uint16_t LED[4] = {GPIO_Pin_12, GPIO_Pin_13, GPIO_Pin_14, GPIO_Pin_15};
 
-	// /* Set GPIO12 (in GPIO port D) to 'output push-pull'. */
-	// gpio_mode_setup(GPIOD, GPIO_MODE_OUTPUT,
-	// 		GPIO_PUPD_NONE, GPIO12 | GPIO13 | GPIO14 | GPIO15);
-}
-
-void loop() {
-	int i;
-    // gpio_toggle(GPIOD, GPIO12);
-
-    /* Blink randamly. */
-    int loop = (rand() % 10) * 1000000;
-    for (i = 0; i < loop; i++) {		/* Wait a bit. */
-        __asm__("nop");
+void delay(uint32_t ms) {
+    ms *= 3360;
+    while(ms--) {
+        __NOP();
     }
 }
 
-
 int main(void)
 {
-    setup();
-    while(1) { loop(); }
+    printf("I am starting\n");
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+    GPIO_InitTypeDef gpio;
+    GPIO_StructInit(&gpio);
+    gpio.GPIO_Pin = LEDS;
+    gpio.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_Init(GPIOD, &gpio);
+    GPIO_SetBits(GPIOD, LEDS);
+    static uint32_t counter = 0;
+    
+    while(1) { 
+        counter++;
+        // GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
+        GPIO_ResetBits(GPIOD, LEDS);
+        GPIO_SetBits(GPIOD, LED[counter % 4]);
+        delay(250);
+    }
+
     return 1;
 }
