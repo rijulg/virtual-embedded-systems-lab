@@ -1,38 +1,27 @@
-#include "stm32f4xx.h"
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_rcc.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "stm32f4xx.h"
+#include "stm32f4xx_hal.h"
 
-const uint16_t LEDS = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-const uint16_t LED[4] = {GPIO_Pin_12, GPIO_Pin_13, GPIO_Pin_14, GPIO_Pin_15};
-
-void delay(uint32_t ms) {
-    ms *= 3360;
-    while(ms--) {
-        __NOP();
-    }
+void setup() {
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  GPIO_InitTypeDef gpio;
+  gpio.Pin = GPIO_PIN_12;
+  gpio.Mode = GPIO_MODE_OUTPUT_PP;
+  gpio.Speed = GPIO_SPEED_FAST;
+  gpio.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init (GPIOD, &gpio);
 }
 
-int main(void)
-{
-    printf("I am starting\n");
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-    GPIO_InitTypeDef gpio;
-    GPIO_StructInit(&gpio);
-    gpio.GPIO_Pin = LEDS;
-    gpio.GPIO_Mode = GPIO_Mode_OUT;
-    GPIO_Init(GPIOD, &gpio);
-    GPIO_SetBits(GPIOD, LEDS);
-    static uint32_t counter = 0;
-    
-    while(1) { 
-        counter++;
-        // GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
-        GPIO_ResetBits(GPIOD, LEDS);
-        GPIO_SetBits(GPIOD, LED[counter % 4]);
-        delay(250);
-    }
+void loop() {
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+  HAL_Delay(750);
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+  HAL_Delay(750);
+}
 
-    return 1;
+int main() {
+  setup();
+  while(1) { loop(); }
+  return 1;
 }

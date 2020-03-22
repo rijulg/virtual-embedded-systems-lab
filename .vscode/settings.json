@@ -1,15 +1,5 @@
 {
     "files.associations": {
-        "rcc.h": "c",
-        "common.h": "c",
-        "stdint.h": "c",
-        "stdlib.h": "c",
-        "gpio.h": "c",
-        "gpio_common_f24.h": "c",
-        "stm32f4xx_conf.h": "c",
-        "stm32f4xx_gpio.h": "c",
-        "stm32f4xx.h": "c",
-        "cmsis_device.h": "c",
-        "stm32f4xx_hal.h": "c"
+        "*.h": "c",
     }
 }

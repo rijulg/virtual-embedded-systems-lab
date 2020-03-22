@@ -4,9 +4,22 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/newlib"
+                "/usr/include/newlib",
+                "${workspaceFolder}/.stm32f407vg/stm32f4xx/inc",
+                "${workspaceFolder}/.stm32f407vg/stm32f4xx/inc/cmsis",
+                "${workspaceFolder}/.stm32f407vg/stm32f4xx/inc/stm32f4-hal"
             ],
-            "defines": ["DEVICE_FAMILY=STM32F40_41xxx"],
+            "defines": [
+                "DEBUG",
+                "USE_FULL_ASSERT",
+                "OS_USE_SEMIHOSTING",
+                "TRACE",
+                "OS_USE_TRACE_SEMIHOSTING_DEBUG",
+                "STM32F407xx",
+                "USE_HAL_DRIVER",
+                "HSE_VALUE=8000000",
+                "OS_INCLUDE_STARTUP_INIT_MULTIPLE_RAM_SECTIONS"
+            ],
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64"

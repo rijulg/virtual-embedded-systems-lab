@@ -4,7 +4,31 @@ project(labs)
 
 include(toolchain.cmake)
 
-add_subdirectory(stm32f4xx)
+file(GLOB_RECURSE SYSTEM_SRCS
+    ${PROJECT_SOURCE_DIR}/stm32f4xx/src/*.c
+    ${PROJECT_SOURCE_DIR}/stm32f4xx/src/*.cpp
+)
 
-add_executable(lab1.elf "../Labs/1. Introduction/main.c")
-target_link_libraries(lab1.elf stm32f4xx)
+list(APPEND SOURCES
+    "/home/workspace/Labs/1. Introduction/main.c"
+)
+
+add_executable(blinky.elf ${SYSTEM_SRCS} ${SOURCES})
+target_include_directories(blinky.elf
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/stm32f4xx/inc
+        ${PROJECT_SOURCE_DIR}/stm32f4xx/inc/cmsis
+        ${PROJECT_SOURCE_DIR}/stm32f4xx/inc/stm32f4-hal
+)
+target_compile_definitions(blinky.elf
+    PRIVATE
+        -DDEBUG
+        -DUSE_FULL_ASSERT
+        -DOS_USE_SEMIHOSTING
+        -DTRACE
+        -DOS_USE_TRACE_SEMIHOSTING_DEBUG
+        -DSTM32F407xx
+        -DUSE_HAL_DRIVER
+        -DHSE_VALUE=8000000
+        -DOS_INCLUDE_STARTUP_INIT_MULTIPLE_RAM_SECTIONS
+)
