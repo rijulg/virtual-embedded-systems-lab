@@ -1,5 +1,6 @@
 # Virtual Embedded Systems Lab
 ![Introduction](.assets/Introduction.png)
+
 In this lab we will introduce you to some tasks that you will likely perform when you start working as an embedded systems engineer. We will cover the following in these labs:
 1. GPIO Output
 2. GPIO Input based on polling and interrupts
