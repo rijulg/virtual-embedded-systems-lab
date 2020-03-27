@@ -9,8 +9,8 @@ RUN apt-get update && \
     # Basic tools
     curl \
     locales \
-    python \
-    python-pip \
+    python3 \
+    python3-pip \
     # Build tools
     gcc-arm-none-eabi \
     ninja-build \
@@ -21,8 +21,7 @@ RUN apt-get update && \
     novnc \
     libx11-6 \
     # Settings
-    && locale-gen en_US.UTF-8 \
-    && pip install watchdog autopep8
+    && locale-gen en_US.UTF-8
 
 # install node and npm
 ENV NVM_DIR /root/.nvm
@@ -50,3 +49,14 @@ RUN mkdir cmake && \
 
 # install xpm and tools
 RUN npm install --global xpm@latest && xpm install --global @xpack-dev-tools/qemu-arm@latest
+
+# install python tools
+RUN pip3 install watchdog autopep8
+
+# Setup VNC Services
+COPY xvfb /etc/init.d/xvfb
+COPY x11vnc /etc/init.d/x11vnc
+COPY novnc /etc/init.d/novnc
+ENV DISPLAY ":1.0"
+RUN mkdir ~/.vnc && x11vnc -storepasswd embedit ~/.vnc/passwd && \
+    chmod +x /etc/init.d/xvfb /etc/init.d/x11vnc /etc/init.d/novnc

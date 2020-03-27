@@ -8,6 +8,5 @@
         "ms-python.python",
         "twxs.cmake"
     ],
-    "shutdownAction": "stopCompose",
-    "postCreateCommand": "cd .devcontainer && chmod +x setup.sh && ./setup.sh"
+    "shutdownAction": "stopCompose"
 }

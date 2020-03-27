@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Lab",
+            "type": "shell",
+            "command": ".stm32f407vg/run.py ${input:labname}",
+            "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+          "id": "labname",
+          "description": "The Lab to execute",
+          "type": "pickString",
+          "default": "Lab_1_Part_1",
+          "options": [
+            "Lab_1_Part_1",
+            "Lab_1_Part_2",
+            "Lab_1_Part_3",
+            "Lab_2_Part_1",
+            "Lab_2_Part_2",
+            "Lab_3",
+            "Lab_4",
+            "Lab_5",
+          ],
+        },
+      ]
+}

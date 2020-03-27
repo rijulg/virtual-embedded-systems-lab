@@ -9,18 +9,14 @@ file(GLOB_RECURSE SYSTEM_SRCS
     ${PROJECT_SOURCE_DIR}/stm32f4xx/src/*.cpp
 )
 
-list(APPEND SOURCES
-    "/home/workspace/Labs/1. Introduction/main.c"
-)
-
-add_executable(blinky.elf ${SYSTEM_SRCS} ${SOURCES})
-target_include_directories(blinky.elf
+add_executable(lab.elf ${SYSTEM_SRCS} ${SOURCE_FILE})
+target_include_directories(lab.elf
     PRIVATE
         ${PROJECT_SOURCE_DIR}/stm32f4xx/inc
         ${PROJECT_SOURCE_DIR}/stm32f4xx/inc/cmsis
         ${PROJECT_SOURCE_DIR}/stm32f4xx/inc/stm32f4-hal
 )
-target_compile_definitions(blinky.elf
+target_compile_definitions(lab.elf
     PRIVATE
         -DDEBUG
         -DUSE_FULL_ASSERT
