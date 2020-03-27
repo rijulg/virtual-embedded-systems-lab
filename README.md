@@ -27,5 +27,5 @@ But before we jump in let's Setup our systems so that we can run the labs themse
     2. Write `Tasks: Run Task`
     3. Run the `Run Lab` Task
     4. Select and run `Lab_1_Part_1`
-    5. Open No VNC in your browser by going to http://127.0.0.1:6080/vnc.html
+    5. Open "No VNC" in your browser by going to http://127.0.0.1:6080/vnc.html
     6. Enter the password "*embedit*" to connect and view the output
