@@ -16,7 +16,7 @@ class VNC:
                 try:
                     check_call(['ps -p', pidFile.read()], stdout=DEVNULL, stderr=STDOUT, shell=True)
                 except CalledProcessError as err:
-                    running = err.returncode
+                    running = err.returncode == 0
         return running
 
     def start(self):

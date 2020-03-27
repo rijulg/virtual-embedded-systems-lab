@@ -38,7 +38,7 @@ static void _button_pinmode_interrupt() {
 static void _transmit_spi_uint8(const uint8_t data) {
     /**
      * @todo
-     * You need to do the implement the SPI protocol using the configured GPIO pins
+     * You need to implement the SPI protocol using the configured GPIO pins
      */
 }
 
