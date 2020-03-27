@@ -6,13 +6,26 @@ In this lab we will introduce you to some tasks that you will likely perform whe
 4. Writing a device driver for a peripheral attached with SPI
 5. Writing a state machine based orchestration system
 
+## What to do in the labs
+In each of the labs you will have functions marked with `@todo`, you need to implement those functions.
+
 But before we jump in let's Setup our systems so that we can run the labs themselves.
 
 ## Setup
-1. Install Docker
-    1. Install Docker-compose
-2. Install VSCode
-3. Install Remote Containers extension for VSCode
-4. Open the folder using VSCode containers
-5. Verify that you can use VNC
-6. Verify that you can run the simulator
+1. Install Docker and Docker-Compose
+    
+    **Windows/Mac**: [Docker Desktop for Windows/Mac](https://www.docker.com/products/docker-desktop)
+
+    **Linux**: [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/)
+2. Install [VSCode](https://code.visualstudio.com/download)
+3. Install [Remote Containers extension for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+4. Download the [lab materials](https://github.com/rijulg/virtual-embedded-systems-lab).
+5. Open the folder using [VSCode containers](https://code.visualstudio.com/docs/remote/containers#_quick-start-try-a-dev-container)
+6. Run Lab 1 Part 1 by running the lab run task
+    
+    1. Bring up the commands menu by pressing `Ctrl+Shift+P`
+    2. Write `Tasks: Run Task`
+    3. Run the `Run Lab` Task
+    4. Select and run `Lab_1_Part_1`
+    5. Open No VNC in your browser by going to http://127.0.0.1:6080/vnc.html
+    6. Enter the password "*embedit*" to connect and view the output

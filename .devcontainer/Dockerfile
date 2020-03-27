@@ -11,6 +11,7 @@ RUN apt-get update && \
     locales \
     python3 \
     python3-pip \
+    python3-tk \
     # Build tools
     gcc-arm-none-eabi \
     ninja-build \
@@ -51,7 +52,7 @@ RUN mkdir cmake && \
 RUN npm install --global xpm@latest && xpm install --global @xpack-dev-tools/qemu-arm@latest
 
 # install python tools
-RUN pip3 install watchdog autopep8
+RUN pip3 install watchdog autopep8 matplotlib
 
 # Setup VNC Services
 COPY xvfb /etc/init.d/xvfb

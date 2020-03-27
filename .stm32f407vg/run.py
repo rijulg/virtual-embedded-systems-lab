@@ -8,25 +8,26 @@ from subprocess import DEVNULL, STDOUT, check_call, CalledProcessError
 class VNC:
     _services = ["xvfb", "x11vnc", "novnc"]
 
-    def _already_running(self, service):
-        running = False
-        pidPath = "/var/run/{}.pid".format(service)
-        if os.path.isfile(pidPath):
-            with open(pidPath, 'r') as pidFile:
-                try:
-                    check_call(['ps -p', pidFile.read()], stdout=DEVNULL, stderr=STDOUT, shell=True)
-                except CalledProcessError as err:
-                    running = err.returncode == 0
-        return running
-
     def start(self):
         for service in self._services:
-            if not self._already_running(service):
-                check_call(['service', service, 'start'], stdout=DEVNULL, stderr=STDOUT)
+            check_call(['service', service, 'start'], stdout=DEVNULL, stderr=STDOUT)
     
     def stop(self):
         for service in reversed(self._services):
-            check_call(['service', service, 'stop'], stdout=DEVNULL, stderr=STDOUT)
+            try:
+                check_call(['service', service, 'stop'], stdout=DEVNULL, stderr=STDOUT)
+            except:
+                pass
+            if service == "x11vnc":
+                os.system('pkill x11vnc')
+            elif service == 'xvfb':
+                os.system('pkill Xvfb')
+            elif service == 'novnc':
+                os.system('pkill websockify')
+
+    def restart(self):
+        self.stop()
+        self.start()
 
 class Runner:
     BUILD_DIR = "/home/workspace/.stm32f407vg/build"
@@ -76,5 +77,5 @@ class Runner:
             print("Invalid lab selected")
 
 if __name__ == "__main__":
-    (VNC()).start()
+    (VNC()).restart()
     (Runner()).run(sys.argv[1])
