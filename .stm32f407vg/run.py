@@ -35,8 +35,8 @@ class Runner:
     def _simulate(self, firmware, graphics = True, captureOutput = None):
         command = [
             '/root/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-8.1/.content/bin/qemu-system-gnuarmeclipse',
-            '--verbose',
-            '--verbose',
+            # '--verbose',
+            # '--verbose',
             '--board', 'STM32F4-Discovery',
             '--mcu', 'STM32F407VG',
             '-d', 'unimp,guest_errors',
@@ -143,7 +143,7 @@ class Runner:
         elif lab == "Lab_3":
             self._lab3()
         elif lab == "Lab_4":
-            print("To be implemented")
+            self._run_lab("/home/workspace/Labs/4. SPI Based Driver/adt7320.c;/home/workspace/Labs/4. SPI Based Driver/spi.o")
         elif lab == "Lab_5":
             print("To be implemented")
         else:

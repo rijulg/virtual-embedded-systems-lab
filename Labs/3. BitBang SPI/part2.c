@@ -26,7 +26,7 @@ static void _setup_spi() {
  *  - SS must be made IDLE before and after the Slave has been selected for data to be transmitted correctly
  *  - Bit changes (MOSI) should be accompanied with SCLK toggle
  */
-static void _transmit_spi_uint8(const uint8_t data) {
+static void _transmit_spi_uint8(uint8_t data) {
 }
 
 int main() {
