@@ -1,4 +1,4 @@
-# Lab 3 SPI Based Driver
+# Lab 4 SPI Based Driver
 In this lab we are assuming that you have a working SPI, it does not matter if it's bit-banged or hardware and that is the beauty of abstraction. Now using the interface provided by the SPI's implementation (spi.h) we will be implementing a driver for a digital temperature sensor. The temperature sensor we will be working with is ADT7320 and it's datasheet has been provided in the folder.
 
 The source file `adt7320.c` has functions that call `verify_xx` functions, these are helper functions designed so that you can verify that your code works. The other file that is included while building this lab `spi.o` has the implementation of all the functions declared in `spi.h` and the file is emulating the temperature sensor. The emulation is only implemented so much that this lab can be completed and you will not be able to execute any other functionality than that required by the lab.
