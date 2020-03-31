@@ -94,6 +94,6 @@ void __initialize_hardware(void) {
   SystemCoreClockUpdate();
 }
 
-void SysTick_Handler(void) {
+__weak void SysTick_Handler(void) {
   HAL_IncTick();
 }
