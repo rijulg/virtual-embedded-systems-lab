@@ -120,7 +120,7 @@ class Runner:
             clk.reverse()
             mosi.reverse()
 
-            plt.plot(time, clk, 'green')
+            plt.plot(time, clk[10:]+[1.25]*10, 'green')
             plt.plot(time, mosi, 'blue')
             plt.yticks([])
             plt.xlabel("Time")

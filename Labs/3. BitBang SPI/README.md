@@ -10,6 +10,11 @@ Now we will be implementing a half-duplex BitBang SPI; BitBanging is the practic
 
 Use the file `part2.c` to write your code and then run it by selecting `Lab_3` in the **Run Lab** task. After the code runs you should either get an error or an image in this folder named `output.png`, ensure that your signal is transmitted correctly using the image.
 
+Your output should look like this:
+![Expected Output](expected_part2.png)
+
+**Note:** changes in MOSI are detected on rising edge of the clock
+
 ## Part 3 - Observations (10%)
 Answer the following questions based on your experience with the implementation of the SPI Peripheral:
 1. Is adding a delay required for synchronization of the communication? Why / Why not?
