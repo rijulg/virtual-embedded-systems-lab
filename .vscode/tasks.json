@@ -7,6 +7,12 @@
             "command": ".stm32f407vg/run.py ${input:labname}",
             "problemMatcher": []
         },
+        {
+            "label": "Run Lab (FAST)",
+            "type": "shell",
+            "command": ".stm32f407vg/run.py --no-clean ${input:labname}",
+            "problemMatcher": []
+        }
     ],
     "inputs": [
         {

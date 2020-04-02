@@ -32,6 +32,9 @@ class VNC:
 class Runner:
     BUILD_DIR = "/home/workspace/.stm32f407vg/build"
 
+    def __init__(self, clean = True):
+        self.clean = clean
+
     def _simulate(self, firmware, graphics = True, captureOutput = None):
         command = [
             '/root/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-8.1/.content/bin/qemu-system-gnuarmeclipse',
@@ -51,9 +54,10 @@ class Runner:
             subprocess.call(command)
 
     def _build(self, src):
-        if os.path.exists(self.BUILD_DIR):
-            shutil.rmtree(self.BUILD_DIR)
-        os.mkdir(self.BUILD_DIR)
+        if self.clean == True:
+            if os.path.exists(self.BUILD_DIR):
+                shutil.rmtree(self.BUILD_DIR)
+            os.mkdir(self.BUILD_DIR)
         os.chdir(self.BUILD_DIR)
         os.system("cmake .. -DSOURCE_FILE=\"{}\" -GNinja".format(src))
         os.system("ninja")
@@ -212,4 +216,7 @@ class Runner:
 
 if __name__ == "__main__":
     (VNC()).restart()
-    (Runner()).run(sys.argv[1])
+    if sys.argv[1] == '--no-clean':
+        (Runner(False)).run(sys.argv[2])
+    else:
+        (Runner()).run(sys.argv[1])
