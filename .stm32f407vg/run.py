@@ -78,7 +78,7 @@ class Runner:
                 return
             
             if len(orange_on_ids) < 2:
-                if orange_on_ids[0] > orange_off_ids[0]:
+                if len(orange_off_ids) < 1 or orange_on_ids[0] > orange_off_ids[0]:
                     print("ERROR: Slave Line not idle before transmission")
                     return
                 else:
