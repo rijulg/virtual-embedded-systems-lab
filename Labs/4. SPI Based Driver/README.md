@@ -16,6 +16,6 @@ The first part of this lab is to identify the manufacturer and revision id of th
 To read the temperature you need to configure the device correctly, make sure that the readings are ready for you to read, read the readings and then convert them using formulas given in the datasheet.
 
 ### Hints
-* Make sure you are reading Bit(s) and Values for registers in the write orderr
+* Make sure you are reading Bit(s) and Values for registers in the write order
 * Make sure you have checked that temperature reading is ready for you to read before you read it
 * You might have to do an operation after reading the temperature
